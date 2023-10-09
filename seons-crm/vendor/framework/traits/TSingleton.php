@@ -1,20 +1,21 @@
 <?php
 
-namespace framework\Traits;
+namespace framework\traits;
 /** 
  * Трейт Singleton
  */
-trait TSingleton{
+trait TSingleton
+{
     /**
      * Содержит текущий экземляр объекта
      * @var self | null
      */
-    private static ?self $instance=null; 
+    private static ?self $instance = null; 
 
     /**
      * Запрещаем создавать экземляр объекта через тип класса Singleton
      */
-    private function construct(){}
+    private function __construct(){}
 
     /**
      * Публичный статичный метод для создания нового единственного объекта, 
@@ -29,7 +30,7 @@ trait TSingleton{
      * Предотвращение клонирование Singleton, чтобы нельзя 
      * было создать второй экземляр
      */
-    private function __clone()
+    public function __clone()
     {
         throw new \LogicException("Этот Singleton не может быть клонирвоан");
     }
@@ -38,7 +39,7 @@ trait TSingleton{
      * Предотвращение сериализации Singleton, чтобы нельзя 
      * было создать второй экземляр
      */
-    private function __wakeup()
+    public function __wakeup()
     {
         throw new \LogicException("Этот Singleton не может быть сериализован");
     }

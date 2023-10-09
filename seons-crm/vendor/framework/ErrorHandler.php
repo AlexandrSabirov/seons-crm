@@ -53,7 +53,8 @@ public function fatalErrorHandler()
     if(!empty($error) && $error['type'] & (E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR)){
         $this->logError($error['message'], $error['file'], $error['line']);
         ob_end_clean();
-        $this->displayError($error['code'], $error['$message'], $error['file'], $error['line']);
+        debug($error);
+        $this->displayError($error['code'] ?? 0, $error['message'], $error['file'], $error['line']);
     }else{
         ob_end_flush();
     }
