@@ -6,7 +6,8 @@ namespace framework;
  * Класс Registry для добавления и извлечения свойств из реестра
  */
 class Registry{
-    use Traits\TSingleton;
+    
+    use traits\TSingleton;
 
     /**
      * Свойства приложения
