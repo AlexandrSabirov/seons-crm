@@ -67,6 +67,7 @@ class Route
                 $controllerObject = new $controller(self::$route);
                 $controllerObject->getModel();
                 $action = self::lowerCamelCase(self::$route['action'] . 'Action');
+                
                 if (method_exists($controllerObject, $action)){
                     $controllerObject->$action();
                     $controllerObject->getView();
@@ -116,7 +117,7 @@ class Route
                     }
                 }
 
-                if (empty($action)){
+                if (empty($route['action'])){
                     $route['action'] = 'index';
                 }
 
